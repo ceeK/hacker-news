@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9704B8D51BAD82FC0020FF24 /* APIAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9704B8D41BAD82FC0020FF24 /* APIAdapter.swift */; settings = {ASSET_TAGS = (); }; };
+		9704B8D81BADA9F90020FF24 /* FetchedResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9704B8D71BADA9F90020FF24 /* FetchedResultsController.swift */; settings = {ASSET_TAGS = (); }; };
+		9704B8DB1BADBAD50020FF24 /* DynamicTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9704B8DA1BADBAD50020FF24 /* DynamicTypeManager.swift */; settings = {ASSET_TAGS = (); }; };
 		974148621BAC9F7500D58B1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974148611BAC9F7500D58B1E /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		974148641BACA66C00D58B1E /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974148631BACA66C00D58B1E /* Fetch.swift */; settings = {ASSET_TAGS = (); }; };
 		979491E9EDDB8E02BB1C4A33 /* Pods_Hacker_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74DD58A6FC2267DDB9B41777 /* Pods_Hacker_News.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -47,6 +50,9 @@
 		37F71A385B0C4E8063D13A20 /* Pods-Hacker News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.debug.xcconfig"; sourceTree = "<group>"; };
 		5C30A7DC9CA188AC08453882 /* Pods-Hacker News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.release.xcconfig"; sourceTree = "<group>"; };
 		74DD58A6FC2267DDB9B41777 /* Pods_Hacker_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hacker_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9704B8D41BAD82FC0020FF24 /* APIAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAdapter.swift; sourceTree = "<group>"; };
+		9704B8D71BADA9F90020FF24 /* FetchedResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsController.swift; sourceTree = "<group>"; };
+		9704B8DA1BADBAD50020FF24 /* DynamicTypeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTypeManager.swift; sourceTree = "<group>"; };
 		974148611BAC9F7500D58B1E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		974148631BACA66C00D58B1E /* Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
 		97C8AF591BA8A11000D22F4F /* Hacker News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9704B8D61BADA9F30020FF24 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9704B8D71BADA9F90020FF24 /* FetchedResultsController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9704B8D91BADBAC40020FF24 /* Dynamic Type */ = {
+			isa = PBXGroup;
+			children = (
+				9704B8DA1BADBAD50020FF24 /* DynamicTypeManager.swift */,
+			);
+			name = "Dynamic Type";
+			sourceTree = "<group>";
+		};
 		97C8AF501BA8A11000D22F4F = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +153,8 @@
 		97C8AF5B1BA8A11000D22F4F /* Hacker News */ = {
 			isa = PBXGroup;
 			children = (
+				9704B8D91BADBAC40020FF24 /* Dynamic Type */,
+				9704B8D61BADA9F30020FF24 /* Controllers */,
 				97C8AF681BA8A11000D22F4F /* Info.plist */,
 				97C8AF5C1BA8A11000D22F4F /* AppDelegate.swift */,
 				97E18F7A1BAB3B73003051F3 /* Model */,
@@ -260,6 +284,7 @@
 		97E18F7B1BAB4DE8003051F3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				9704B8D41BAD82FC0020FF24 /* APIAdapter.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -459,8 +484,11 @@
 				97E18F6A1BAA0E3C003051F3 /* CommentsViewController.swift in Sources */,
 				97E18F6D1BAA0E47003051F3 /* SettingsViewController.swift in Sources */,
 				97E18F751BAA2114003051F3 /* UIFont+App.swift in Sources */,
+				9704B8DB1BADBAD50020FF24 /* DynamicTypeManager.swift in Sources */,
 				97E18F711BAA152F003051F3 /* StoryTableViewCell.swift in Sources */,
 				97E18F791BAA218E003051F3 /* UIColor+App.swift in Sources */,
+				9704B8D81BADA9F90020FF24 /* FetchedResultsController.swift in Sources */,
+				9704B8D51BAD82FC0020FF24 /* APIAdapter.swift in Sources */,
 				97E18F7F1BAB53CD003051F3 /* Comment.swift in Sources */,
 				97E18F7D1BAB5166003051F3 /* Story.swift in Sources */,
 				974148621BAC9F7500D58B1E /* User.swift in Sources */,

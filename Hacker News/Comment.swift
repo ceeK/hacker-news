@@ -11,7 +11,6 @@ import ObjectMapper
 
 class Comment: Item {
     var parent: Faultable<Comment>!
-    var kids: [Faultable<Comment>] = []
     var text: String!
     
     required init?(_ map: Map) {
@@ -21,13 +20,6 @@ class Comment: Item {
     override func mapping(map: Map) {
         super.mapping(map)
         parent <- (map["parent"], FaultableTransformer<Comment>())
-        kids <- (map["kids"], FaultableTransformer<Comment>())
         text <- map["text"]
-    }
-}
-
-extension Comment: Fetchable {
-    func fetch() {
-        // TODO: Model -> Networking code
     }
 }

@@ -7,13 +7,32 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class Story: Item {
+    var commentCount: Int!
+    var score: Int!
+    var title: String!
+    var url: NSURL!
     
-}
-
-extension Story: Fetchable {
-    func fetch() {
-        
+    required init?(_ map: Map) {
+        super.init(map)
+    }
+    
+    override func mapping(map: Map) {
+        super.mapping(map)
+        commentCount <- map["descendants"]
+        score <- map["score"]
+        title <- map["title"]
+        url <- (map["url"], URLTransform())
+    }
+    
+    // MARK: Type methods
+    
+    class func fetchTopStories(callback: (stories: [Story]) -> Void) {
+        let apiAdapter = APIAdapter.sharedInstance
+        apiAdapter.topStories { (stories) -> Void in
+            callback(stories: stories)
+        }
     }
 }

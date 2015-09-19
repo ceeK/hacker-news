@@ -10,7 +10,12 @@ import UIKit
 import PureLayout
 
 class StoriesViewController: UIViewController {
-
+    private var stories: [Story] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +24,11 @@ class StoriesViewController: UIViewController {
 
         view.addSubview(tableView)
         setupConstraints()
+        
+        print("Fetching top stories")
+        Story.fetchTopStories { (stories) -> Void in
+            self.stories = stories
+        }
     }
 
     // MARK: Constraints
@@ -46,13 +56,16 @@ extension StoriesViewController: UITableViewDataSource {
             fatalError("Unable to dequeue StoryTableViewCell")
         }
         
-        cell.titleLabel.text = "Hello world"
-        cell.pointsLabel.text = "59"
+        let story = stories[indexPath.row]
+    
+        cell.titleLabel.text = story.title
+        cell.commentsButton.setTitle("\(story.commentCount)", forState: .Normal)
+        cell.pointsLabel.text = "\(story.score) - by \(story.by)"
         
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return stories.count
     }
 }

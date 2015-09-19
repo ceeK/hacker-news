@@ -14,6 +14,7 @@ protocol Fetchable {
     func fetch()
 }
 
+/// Holds information on Faultable objects.
 struct Faultable<T: Fetchable> : Fetchable, CustomStringConvertible {
     var identifier: Int!
     var obj: T? = nil {
@@ -42,6 +43,7 @@ struct Faultable<T: Fetchable> : Fetchable, CustomStringConvertible {
     }()
 }
 
+/// Transforms identifiers into Faultable objects.
 class FaultableTransformer<T: Fetchable> : TransformType {
     typealias Object = Faultable<T>
     typealias JSON = Int

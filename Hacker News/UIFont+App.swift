@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIFont {
-    public class func appPrimaryFont() -> UIFont {
-        guard let font = UIFont(name: "Avenir-Medium", size: 12.0) else {
+    public class func appPrimaryFont(ofSize size: CGFloat = 16.0) -> UIFont {
+        guard let font = UIFont(name: "Avenir-Medium", size: size) else {
             fatalError("Avenir-Medium font cannot be loaded")
         }
         

@@ -14,11 +14,25 @@ enum ItemType: String {
     case Story = "story"
 }
 
-class Item: Mappable {
+class Item: Mappable, CustomStringConvertible {
     var identifier: Int!
-    var by: User!
+    var by: String!
+    var kids: [Faultable<Item>] = []
     var time: NSDate!
     var itemType: ItemType!
+    
+    var description: String {
+        get {
+            guard let string = Mapper().toJSONString(self, prettyPrint: true) else {
+                return "\(identifier)"
+            }
+            
+            return string
+        }
+    }
+    
+    
+    // MARK: Mappable
     
     required init?(_ map: Map) {
         
@@ -29,5 +43,19 @@ class Item: Mappable {
         by <- map["by"]
         time <- (map["time"], DateTransform())
         itemType <- map["type"]
+    }
+    
+    // MARK: Public methods
+    
+    func fetchKids() {
+        for item in kids {
+            item.fetch()
+        }
+    }
+}
+
+extension Item: Fetchable {
+    func fetch() {
+        
     }
 }

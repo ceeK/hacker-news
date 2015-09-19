@@ -16,6 +16,7 @@ class StoryTableViewCell: UITableViewCell {
         
         contentView.addSubview(titleLabel)
         contentView.addSubview(pointsLabel)
+        contentView.addSubview(commentsButton)
         setupConstraints()
     }
 
@@ -30,10 +31,16 @@ class StoryTableViewCell: UITableViewCell {
 
         titleLabel.autoPinEdgeToSuperviewMargin(.Left)
         titleLabel.autoPinEdgeToSuperviewMargin(.Top)
+        titleLabel.autoPinEdge(.Trailing, toEdge: .Leading, ofView: commentsButton, withOffset: -20.0)
         
         pointsLabel.autoPinEdge(.Top, toEdge: .Bottom, ofView: titleLabel, withOffset: 5.0)
         pointsLabel.autoPinEdgeToSuperviewMargin(.Left)
         pointsLabel.autoPinEdgeToSuperviewMargin(.Bottom)
+        
+        commentsButton.autoPinEdgeToSuperviewMargin(.Right)
+        commentsButton.autoAlignAxis(.Horizontal, toSameAxisOfView: contentView)
+        commentsButton.setContentCompressionResistancePriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
+        commentsButton.setContentHuggingPriority(UILayoutPriorityDefaultHigh, forAxis: .Horizontal)
     }
     
     // MARK: Property accessors
@@ -43,7 +50,8 @@ class StoryTableViewCell: UITableViewCell {
         titleLabel.text = "Test"
         titleLabel.font = UIFont.appPrimaryFont()
         titleLabel.textAlignment = .Left
-        titleLabel.textColor = UIColor.appPrimaryColor()
+        titleLabel.textColor = UIColor.appTitleColor()
+        titleLabel.numberOfLines = 0
         return titleLabel
     }()
     
@@ -64,6 +72,15 @@ class StoryTableViewCell: UITableViewCell {
     }()
     
     private(set) lazy var commentsButton: UIButton = {
-       return UIButton()
+        let commentsButton = UIButton()
+        commentsButton.titleLabel?.font = UIFont.appPrimaryFont(ofSize: 12)
+        
+        var image = UIImage(named: "icon_comments")?.imageWithAlignmentRectInsets(UIEdgeInsetsMake(0, 0, 5.0, 0))
+        
+        commentsButton.setBackgroundImage(image, forState: .Normal)
+        commentsButton.contentMode = .Center
+        commentsButton.setTitle("0", forState: .Normal)
+        commentsButton.setTitleColor(UIColor.appPrimaryColor(), forState: .Normal)
+        return commentsButton
     }()
 }
