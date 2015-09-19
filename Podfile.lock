@@ -1,0 +1,16 @@
+PODS:
+  - Firebase (2.3.3)
+  - ObjectMapper (0.17)
+  - PureLayout (3.0.1)
+
+DEPENDENCIES:
+  - Firebase (>= 2.3.3)
+  - ObjectMapper
+  - PureLayout
+
+SPEC CHECKSUMS:
+  Firebase: 2db60272f68ce40c7d47e5ae6eddc16977c65d4c
+  ObjectMapper: fa286b7cb5a398f1b0d8d64d0dd33fd1b307022c
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+
+COCOAPODS: 0.39.0.beta.4
