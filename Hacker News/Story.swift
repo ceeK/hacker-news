@@ -31,8 +31,8 @@ class Story: Item {
     
     class func fetchTopStories(callback: (stories: [Story]) -> Void) {
         let apiAdapter = APIAdapter.sharedInstance
-        apiAdapter.topStories { (stories) -> Void in
+        apiAdapter.stories(forType: .Top, callback: { (stories) -> Void in
             callback(stories: stories)
-        }
+        })
     }
 }

@@ -56,6 +56,5 @@ class Item: Mappable, CustomStringConvertible {
 
 extension Item: Fetchable {
     func fetch() {
-        
     }
 }

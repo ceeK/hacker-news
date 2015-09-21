@@ -18,6 +18,14 @@ import Foundation
 import Firebase
 import ObjectMapper
 
+enum StoryType: String {
+    case Top = "topstories"
+    case Ask = "1"
+    case New = "2"
+    case Show = "3"
+    case Job = "4"
+}
+
 class APIAdapter {
     private let firebase = Firebase(url: "https://hacker-news.firebaseio.com/v0/")
     private var firebaseItem: Firebase {
@@ -36,8 +44,8 @@ class APIAdapter {
     
     // MARK: Public methods
     
-    func topStories(callback: (stories: [Story]) -> Void ) {
-        let paths = firebase.childByAppendingPath("topstories")
+    func stories(forType type: StoryType, callback: (stories: [Story]) -> Void ) {
+        let paths = firebase.childByAppendingPath(type.rawValue)
         
         paths.observeEventType(FEventType.Value) { (snapshot, string) -> Void in
             var topStories: [Story] = []
@@ -53,7 +61,7 @@ class APIAdapter {
             }
         }
     }
-    
+
     func getStory(forIdentifier identifier: Int, withUpdates: Bool, callback: (story: Story) -> Void) {
         let path = firebaseItem.childByAppendingPath("\(identifier)")
         
